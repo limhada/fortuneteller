@@ -17,7 +17,7 @@ const openai = new OpenAIApi(configuration);
 
 // cors 이슈 해결
 let corsOptions = {
-  origin: "https://fortuneteller-eqt.pages.dev/",
+  origin: "https://fortuneteller-eqt.pages.dev",
   credentials: true,
 };
 app.use(cors(corsOptions));
