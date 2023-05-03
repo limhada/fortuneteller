@@ -70,20 +70,23 @@ function sendMessage() {
 // 챗봇에게 운세를 요청하는 함수
 async function getFortune(message) {
   try {
-    const response = await fetch("https://o3pxlz5mopgamqpu7xqa4i3roy0sopqw.lambda-url.ap-northeast-2.on.aws/fortune", {
-      // 운세를 요청할 서버 URL
-      method: "POST", // POST 방식으로 요청
-      headers: {
-        "Content-Type": "application/json", // 요청의 content-type 설정
-      },
-      body: JSON.stringify({
-        // FIXME: 지울거
-        //   message: message,
-        myDateTime: myDateTime,
-        userMessages: userMessages,
-        assistantMessages: assistantMessages,
-      }), // 요청의 body에 입력된 메시지를 포함하여 전송
-    });
+    const response = await fetch(
+      "https://r1ymdudqpj.execute-api.ap-northeast-2.amazonaws.com/prox/fortuneTell",
+      {
+        // 운세를 요청할 서버 URL
+        method: "POST", // POST 방식으로 요청
+        headers: {
+          "Content-Type": "application/json", // 요청의 content-type 설정
+        },
+        body: JSON.stringify({
+          // FIXME: 지울거
+          //   message: message,
+          myDateTime: myDateTime,
+          userMessages: userMessages,
+          assistantMessages: assistantMessages,
+        }), // 요청의 body에 입력된 메시지를 포함하여 전송
+      }
+    );
     const data = await response.json(); // 응답 데이터를 JSON 형식으로 변환
     // 응답이 왔을 때
 
