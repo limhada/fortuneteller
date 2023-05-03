@@ -71,12 +71,11 @@ function sendMessage() {
 async function getFortune(message) {
   try {
     const response = await fetch(
-      "https://r1ymdudqpj.execute-api.ap-northeast-2.amazonaws.com/prox/fortune",
+      "https://r1ymdudqpj.execute-api.ap-northeast-2.amazonaws.com/prox/fortuneTell",
       {
         // 운세를 요청할 서버 URL
         method: "POST", // POST 방식으로 요청
         headers: {
-          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json", // 요청의 content-type 설정
         },
         body: JSON.stringify({
