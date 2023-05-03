@@ -70,7 +70,7 @@ function sendMessage() {
 // 챗봇에게 운세를 요청하는 함수
 async function getFortune(message) {
   try {
-    const response = await fetch("http://localhost:3000/fortune", {
+    const response = await fetch("https://o3pxlz5mopgamqpu7xqa4i3roy0sopqw.lambda-url.ap-northeast-2.on.aws/fortune", {
       // 운세를 요청할 서버 URL
       method: "POST", // POST 방식으로 요청
       headers: {
