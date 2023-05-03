@@ -28,7 +28,7 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // POST method route
-app.post("/fortune", async function (req, res) {
+app.post("/fortuneTell", async function (req, res) {
   let { userMessages, assistantMessages, myDateTime } = req.body;
   console.log(userMessages);
   console.log(assistantMessages);
@@ -80,7 +80,7 @@ app.post("/fortune", async function (req, res) {
         )
       );
     }
-    if (assistantMessages.lenght !== 0) {
+    if (assistantMessages.length !== 0) {
       messagesAll.push(
         JSON.parse(
           '{"role": "assistant", "content": "' +
@@ -92,14 +92,14 @@ app.post("/fortune", async function (req, res) {
   }
 
   // 요청을 하기 직전인 이곳에서 확인 하기!
-  console.log(messagesAll);
+  // console.log(messagesAll);
 
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: messagesAll,
   });
 
-  let = fortune = completion.data.choices[0].message["content"];
+  let fortune = completion.data.choices[0].message["content"];
   // 데이터 확인용
   // console.log(fortune);
 
