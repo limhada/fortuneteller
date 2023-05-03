@@ -76,6 +76,7 @@ async function getFortune(message) {
         // 운세를 요청할 서버 URL
         method: "POST", // POST 방식으로 요청
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json", // 요청의 content-type 설정
         },
         body: JSON.stringify({
