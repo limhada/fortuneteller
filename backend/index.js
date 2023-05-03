@@ -80,7 +80,7 @@ app.post("/fortuneTell", async function (req, res) {
         )
       );
     }
-    if (assistantMessages.lenght !== 0) {
+    if (assistantMessages.length !== 0) {
       messagesAll.push(
         JSON.parse(
           '{"role": "assistant", "content": "' +
@@ -99,7 +99,7 @@ app.post("/fortuneTell", async function (req, res) {
     messages: messagesAll,
   });
 
-  let = fortune = completion.data.choices[0].message["content"];
+  let fortune = completion.data.choices[0].message["content"];
   // 데이터 확인용
   // console.log(fortune);
 
