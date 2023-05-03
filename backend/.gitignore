@@ -1,2 +1,4 @@
 .env
 /node_modules
+# 람다에 업로드 할 .zip파일도 제외
+backend.zip

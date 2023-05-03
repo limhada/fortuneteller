@@ -1,5 +1,6 @@
 require("dotenv").config();
-
+// 서버리스
+const serverless = require("serverless-http");
 const { Configuration, OpenAIApi } = require("openai");
 
 // express 코드
@@ -15,12 +16,11 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // cors 이슈 해결
-// let corsOptions = {
-//     origin: 'https://www.domain.com',
-//     credentials: true
-// }
-
-app.use(cors());
+let corsOptions = {
+  origin: "https://fortuneteller-eqt.pages.dev/",
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // post 요청 받을 수 있도록
 // body값을 읽기 위한 코드
@@ -106,4 +106,8 @@ app.post("/fortune", async function (req, res) {
   res.json({ assistant: fortune });
 });
 
-app.listen(3000);
+// 기존에 실행했던 서버
+// app.listen(3000);
+
+//  express로 만든 app을 serverless를 이용해서 내보내기
+module.exports.handler = serverless(app);
