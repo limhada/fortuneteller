@@ -71,7 +71,7 @@ function sendMessage() {
 async function getFortune(message) {
   try {
     const response = await fetch(
-      "https://r1ymdudqpj.execute-api.ap-northeast-2.amazonaws.com/prox/fortuneTell",
+      "https://p9vt8sq7sj.execute-api.ap-northeast-2.amazonaws.com/prod/fortunTell",
       {
         // 운세를 요청할 서버 URL
         method: "POST", // POST 방식으로 요청
