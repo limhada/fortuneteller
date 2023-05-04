@@ -114,3 +114,18 @@ body {
   font-size: 25px;
   align-items: cneter;
 }
+
+.kakao_ad_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  min-width: 330px;
+  min-height: 60px;
+  /* background-color: #c5e5aa; */
+}
+
+.intro-container h1 {
+  margin: 10px 10px 10px 10px;
+  /* background-color: #c5e5aa; */
+}
