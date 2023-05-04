@@ -94,10 +94,31 @@ app.post("/fortuneTell", async function (req, res) {
   // 요청을 하기 직전인 이곳에서 확인 하기!
   // console.log(messagesAll);
 
-  const completion = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
-    messages: messagesAll,
-  });
+  // 요청 실패하면 재시도 하는 로직이 필요함
+  // const completion = await openai.createChatCompletion({
+  //   model: "gpt-3.5-turbo",
+  //   messages: messagesAll,
+  // });
+
+  // 실패 시 3번까지 재시도 하는 로직
+  const maxRetries = 3;
+  let retries = 0;
+  let completion;
+  while (retries < maxRetries) {
+    try {
+      completion = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: messagesAll,
+      });
+      break;
+    } catch (error) {
+      retries++;
+      console.log(error);
+      console.log(
+        `Error fetching data, retrying (${retries}/${maxRetries})...`
+      );
+    }
+  }
 
   let fortune = completion.data.choices[0].message["content"];
   // 데이터 확인용
