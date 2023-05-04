@@ -106,16 +106,16 @@ app.post("/fortuneTell", async function (req, res) {
   let completion;
   while (retries < maxRetries) {
     try {
-      completion = await openail.createChatCompletion({
+      completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: messagesAll,
       });
       break;
     } catch (error) {
       retries++;
-      console.log(eroor);
+      console.log(error);
       console.log(
-        `Error fetching data, retrying (${reteies}/${maxRetries})...`
+        `Error fetching data, retrying (${retries}/${maxRetries})...`
       );
     }
   }
