@@ -116,7 +116,6 @@ function sleep(sec) {
 
 
 function check() {
-  const check = document.querySelector(".gift-check");
     const t = document.createElement("p");
     t.innerText =
       "운세에 대해 더 궁금한 것이 있으면 질문해 주시고" +
@@ -160,6 +159,7 @@ async function getFortune() {
 
       addMessage(data.assistant); // 챗봇이 응답한 운세를 채팅 박스에 추가
       
+      const check = document.querySelector(".gift-check");
       if (check === null) {
         check();
       }
