@@ -14,6 +14,7 @@ function addMessage(message, isUser = false) {
   chatBox.scrollTop = chatBox.scrollHeight; // 채팅 박스를 스크롤하여 최신 메시지가 보이도록 함
 }
 
+const startInput = document.getElementById("chat-input");
 let userMessages = []; // 사용자 메시지를 누적 저장할 배열
 let assistantMessages = []; // 챗봇 메시지를 누적 저장할 배열
 let myDateTime = "";
@@ -56,6 +57,9 @@ function start() {
   document.querySelector(".intro-container").style.display = "none";
   document.querySelector(".chat-container").style.display = "block";
   // 위와 똑같은 기능
+
+  startInput.value = "오늘 운세를 알려줘";
+  sendMessage();
 }
 
 // 사용자가 메시지를 보내는 함수
