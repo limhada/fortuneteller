@@ -114,16 +114,11 @@ function sleep(sec) {
   return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }
 
-function checked() {
-  const t = document.createElement("p");
-  t.innerText =
-    "운세에 대해 더 궁금한 것이 있으면 질문해 주시고" +
-    "<br>" +
-    "우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♡";
-  t.classList.add("gift-check answer");
-  chatBox.appendChild(t);
-}
-
+let first = 0;
+const firstMessages =
+  "운세에 대해 더 궁금한 것이 있으면 질문해 주시고" +
+  "<br>" +
+  "우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♡";
 // 챗봇에게 운세를 요청하는 함수
 async function getFortune() {
   const maxRetries = 3;
@@ -158,9 +153,9 @@ async function getFortune() {
 
       addMessage(data.assistant); // 챗봇이 응답한 운세를 채팅 박스에 추가
 
-      const ch = document.querySelector(".gift-check");
-      if (ch === null) {
-        checked();
+      if (first === 0) {
+        addMessage(firstMessages);
+        first++;
       }
 
       // console.log(data); // 운세와 관련된 데이터를 콘솔에 출력
