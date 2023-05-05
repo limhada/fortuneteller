@@ -19,10 +19,22 @@ let assistantMessages = []; // 챗봇 메시지를 누적 저장할 배열
 let myDateTime = "";
 
 function start() {
-  const date = document.getElementById("date").value;
+  const date = document.getElementById("date1").value;
   const hour = document.querySelector("#hour").value;
+  console.log(date);
+  const regex = /^\d{4}-\d{2}-\d{2}$/;
   if (date === "") {
     alert("생년월일을 입력해주세요.");
+    return;
+  }
+  if (!regex.test(date)) {
+    alert("생년월일을 정확하게 입력해주세요.");
+    return;
+  }
+  // 정확하지 않은 생년월일 입력하면 다시 생년월일 입력받기
+  let warningOn = document.querySelector(".warning.on");
+  if (warningOn) {
+    alert("생년월일을 정확하게 입력해주세요!!.");
     return;
   }
   // if (hour === '') {
@@ -114,3 +126,49 @@ async function getFortune(message) {
 document
   .querySelector(".chat-input button")
   .addEventListener("click", sendMessage);
+
+let date1 = document.querySelector("#date1");
+let warning = document.querySelector(".warning");
+
+const onInputHandler = () => {
+  let val = date1.value.replace(/\D/g, "");
+  let leng = val.length;
+  let result = "";
+
+  if (leng < 6) result = val;
+  else if (leng < 8) {
+    result += val.substring(0, 4);
+    result += "-";
+    result += val.substring(4);
+  } else {
+    result += val.substring(0, 4);
+    result += "-";
+    result += val.substring(4, 6);
+    result += "-";
+    result += val.substring(6);
+
+    if (!checkValidDate(result)) {
+      warning.classList.add("on");
+    } else {
+      warning.classList.remove("on");
+    }
+  }
+  date1.value = result;
+};
+
+const checkValidDate = (value) => {
+  let result = true;
+  try {
+    let date = value.split("-");
+    let y = parseInt(date[0], 10),
+      m = parseInt(date[1], 10),
+      d = parseInt(date[2], 10);
+
+    let dateRegex =
+      /^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-.\/])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$/;
+    result = dateRegex.test(d + "-" + m + "-" + y);
+  } catch (err) {
+    result = false;
+  }
+  return result;
+};

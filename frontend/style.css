@@ -106,7 +106,7 @@ body {
 }
 
 .intro-container img {
-  width: 50%;
+  width: 350px;
   min-width: 300px;
 }
 
@@ -128,4 +128,21 @@ body {
 .intro-container h1 {
   margin: 10px 10px 10px 10px;
   /* background-color: #c5e5aa; */
+}
+
+.date_item1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width:100%; */
+  /* height:100vh; */
+  .warning {
+    color: red;
+    font-size: 0.8rem;
+    visibility: hidden;
+    &.on {
+      visibility: visible;
+    }
+  }
 }

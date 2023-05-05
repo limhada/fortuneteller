@@ -32,9 +32,22 @@
     <div class="intro-container">
       <h1>운세 보는 깜냥이</h1>
       <img src="깜냥이.jpg" alt="깜냥이" />
-      <label for="date">생년월일</label>
-      <input id="date" type="date" />
-      <label for="date">태어난 시간</label>
+      <!-- <label for="date">생년월일</label>
+      <input id="date" type="date" /> -->
+      <div class="date_item1">
+        <div class="date_wrap1">
+          <label for="date1">생년월일 : </label>
+          <input
+            placeholder="YYYY-MM-DD"
+            id="date1"
+            maxlength="10"
+            oninput="onInputHandler()"
+          />
+        </div>
+        <span class="warning">올바르지 않은 생년월일입니다.</span>
+      </div>
+      <div>
+      <label for="date">태어난 시간 : </label>
       <select id="hour" name="hours">
         <option value="">모름</option>
         <option value="00">00</option>
@@ -62,6 +75,7 @@
         <option value="22">22</option>
         <option value="23">23</option>
       </select>
+    </div>
       <button onclick="start()">운세 보기</button>
     </div>
 
