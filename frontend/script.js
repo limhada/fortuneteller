@@ -107,6 +107,7 @@ function sendMessage() {
 
 function loading() {
   document.getElementById("loader").style.display = "block";
+  document.getElementById("chat-loader").style.display = "block";
   document.getElementById("btn").style.display = "none";
 }
 
@@ -143,6 +144,7 @@ async function getFortune() {
       // 응답이 왔을 때
 
       document.getElementById("loader").style.display = "none";
+      document.getElementById("chat-loader").style.display = "none";
       document.getElementById("btn").style.display = "block";
 
       // assistantMessage 누적에 추가

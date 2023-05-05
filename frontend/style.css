@@ -57,7 +57,6 @@ body {
 
   @media screen and (min-width: 500px) {
     padding-right: 3%;
-
   }
 }
 
@@ -80,15 +79,16 @@ body {
   border-radius: 10px;
   /* border-top-left-radius: 5px; */
   /* border-top-right-radius: 5px; */
+  position: relative;
 }
 
 .chat-input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   padding: 10px;
   /* border-top: 1px solid #eee; */
   display: flex;
+  justify-content: center;
   align-items: stretch;
 }
 .chat-input #btn {
@@ -213,14 +213,16 @@ body {
   color: white;
 }
 
+#chat-loader {
+  font-size: 25px;
+  align-items: cneter;
+  color: white;
+}
+
 .kakao_ad_area {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
   margin-top: 20px;
   min-width: 330px;
   min-height: 60px;
-  /* background-color: #c5e5aa; */
 }
 
 .kakao_ad {
@@ -235,8 +237,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* width:100%; */
-  /* height:100vh; */
+
   .warning {
     color: red;
     font-size: 0.8rem;
@@ -245,4 +246,24 @@ body {
       visibility: visible;
     }
   }
+}
+
+
+/* 가운데 정렬 정리해놓기!!  */
+#chat-loader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #393c3c;
+  opacity: 0.8;
+}
+
+#chat-loader-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
