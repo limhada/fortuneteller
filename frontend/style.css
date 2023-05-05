@@ -54,6 +54,11 @@ body {
 }
 .gift-t {
   padding-right: 5%;
+
+  @media screen and (min-width: 500px) {
+    padding-right: 3%;
+
+  }
 }
 
 .chat-header h1 {
