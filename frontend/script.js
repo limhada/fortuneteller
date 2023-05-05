@@ -120,7 +120,7 @@ function checked() {
     "운세에 대해 더 궁금한 것이 있으면 질문해 주시고" +
     "<br>" +
     "우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♡";
-  t.classList.add("gift-check");
+  t.classList.add("gift-check answer");
   chatBox.appendChild(t);
 }
 
