@@ -85,8 +85,8 @@ function sendMessage() {
 }
 
 function loading() {
-  document.getElementById("loader").style.display = "block";
-  document.getElementById("btn").style.display = "none";
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("btn").style.display = "block";
 }
 
 
