@@ -19,10 +19,20 @@ let userMessages = []; // 사용자 메시지를 누적 저장할 배열
 let assistantMessages = []; // 챗봇 메시지를 누적 저장할 배열
 let myDateTime = "";
 
+// 아이폰13에서 화면이 줌 된 상태로 운세 보기 버튼 클릭 시 결과 화면이 확대되어 사용자의 안좋은 경험을 유발하기 때문에 운세 보기 버튼 클릭 시 화면이 기본 스케일로 축소된 상태로 결과가 나옴
+function zoomOut() {
+  var viewport = document.querySelector("meta[name=viewport]");
+  viewport.setAttribute(
+    "content",
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  );
+  document.querySelector(".startBnt").blur();
+}
+
 function start() {
   const date = document.getElementById("date1").value;
   const hour = document.querySelector("#hour").value;
-  console.log(date);
+  // console.log(date);
   const regex = /^\d{4}-\d{2}-\d{2}$/;
   if (date === "") {
     alert("생년월일을 입력해주세요.");
@@ -42,6 +52,7 @@ function start() {
   //   alert('태어난 시간을 입력해주세요.');
   //   return;
   // }
+  zoomOut();
 
   myDateTime = date + " " + hour;
   // 잘 입력되는지 확인용
@@ -89,9 +100,8 @@ function loading() {
   document.getElementById("btn").style.display = "none";
 }
 
-
 function sleep(sec) {
-  return new Promise(resolve => setTimeout(resolve, sec * 1000));
+  return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }
 
 // 챗봇에게 운세를 요청하는 함수
@@ -99,47 +109,49 @@ async function getFortune() {
   const maxRetries = 3;
   let retries = 0;
   while (retries < maxRetries) {
-  try {
-    const response = await fetch(
-      "https://p9vt8sq7sj.execute-api.ap-northeast-2.amazonaws.com/prod/fortuneTell",
-      {
-        // 운세를 요청할 서버 URL
-        method: "POST", // POST 방식으로 요청
-        headers: {
-          "Content-Type": "application/json", // 요청의 content-type 설정
-        },
-        body: JSON.stringify({
-          // FIXME: 지울거
-          //   message: message,
-          myDateTime: myDateTime,
-          userMessages: userMessages,
-          assistantMessages: assistantMessages,
-        }), // 요청의 body에 입력된 메시지를 포함하여 전송
+    try {
+      const response = await fetch(
+        "https://p9vt8sq7sj.execute-api.ap-northeast-2.amazonaws.com/prod/fortuneTell",
+        {
+          // 운세를 요청할 서버 URL
+          method: "POST", // POST 방식으로 요청
+          headers: {
+            "Content-Type": "application/json", // 요청의 content-type 설정
+          },
+          body: JSON.stringify({
+            // FIXME: 지울거
+            //   message: message,
+            myDateTime: myDateTime,
+            userMessages: userMessages,
+            assistantMessages: assistantMessages,
+          }), // 요청의 body에 입력된 메시지를 포함하여 전송
+        }
+      );
+      const data = await response.json(); // 응답 데이터를 JSON 형식으로 변환
+      // 응답이 왔을 때
+
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("btn").style.display = "block";
+
+      // assistantMessage 누적에 추가
+      assistantMessages.push(data.assistant);
+
+      addMessage(data.assistant); // 챗봇이 응답한 운세를 채팅 박스에 추가
+      console.log(data); // 운세와 관련된 데이터를 콘솔에 출력
+      return data; // 받은 데이터를 반환
+    } catch (error) {
+      // 오류 발생 시 콘솔에 출력
+      await sleep(0.5);
+      retries++;
+      console.log(error);
+      console.log(
+        `Error fetching data, retrying (${retries}/${maxRetries})...`
+      );
+      if (retries === 3) {
+        alert("서버가 불안정합니다. 잠시 후 다시 시도해주세요!");
       }
-    );
-    const data = await response.json(); // 응답 데이터를 JSON 형식으로 변환
-    // 응답이 왔을 때
-
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("btn").style.display = "block";
-
-    // assistantMessage 누적에 추가
-    assistantMessages.push(data.assistant);
-
-    addMessage(data.assistant); // 챗봇이 응답한 운세를 채팅 박스에 추가
-    console.log(data); // 운세와 관련된 데이터를 콘솔에 출력
-    return data; // 받은 데이터를 반환
-  } catch (error) {
-    // 오류 발생 시 콘솔에 출력
-    await sleep(0.5);
-    retries++;
-    console.log(error);
-    console.log(`Error fetching data, retrying (${retries}/${maxRetries})...`);
-    if (retries === 3) {
-      alert("서버가 불안정합니다. 잠시 후 다시 시도해주세요!");
     }
   }
-}
 }
 
 document
