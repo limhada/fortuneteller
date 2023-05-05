@@ -14,6 +14,7 @@ function addMessage(message, isUser = false) {
   chatBox.scrollTop = chatBox.scrollHeight; // 채팅 박스를 스크롤하여 최신 메시지가 보이도록 함
 }
 
+const startInput = document.getElementById("chat-input");
 let userMessages = []; // 사용자 메시지를 누적 저장할 배열
 let assistantMessages = []; // 챗봇 메시지를 누적 저장할 배열
 let myDateTime = "";
@@ -56,6 +57,9 @@ function start() {
   document.querySelector(".intro-container").style.display = "none";
   document.querySelector(".chat-container").style.display = "block";
   // 위와 똑같은 기능
+
+  startInput.value = "오늘 운세를 알려줘";
+  sendMessage();
 }
 
 // 사용자가 메시지를 보내는 함수
@@ -69,7 +73,7 @@ function sendMessage() {
   if (message) {
     // 입력된 메시지가 있으면
     addMessage(message, true); // 사용자의 메시지로 간주하여 채팅 박스에 추가
-    getFortune(message); // 입력된 메시지를 이용해 챗봇으로부터 운세를 받아옴
+    getFortune(); // 입력된 메시지를 이용해 챗봇으로부터 운세를 받아옴
     inputBox.value = ""; // 입력 상자를 초기화
 
     loading();
@@ -85,8 +89,16 @@ function loading() {
   document.getElementById("btn").style.display = "none";
 }
 
+
+function sleep(sec) {
+  return new Promise(resolve => setTimeout(resolve, sec * 1000));
+}
+
 // 챗봇에게 운세를 요청하는 함수
-async function getFortune(message) {
+async function getFortune() {
+  const maxRetries = 3;
+  let retries = 0;
+  while (retries < maxRetries) {
   try {
     const response = await fetch(
       "https://p9vt8sq7sj.execute-api.ap-northeast-2.amazonaws.com/prod/fortuneTell",
@@ -119,8 +131,15 @@ async function getFortune(message) {
     return data; // 받은 데이터를 반환
   } catch (error) {
     // 오류 발생 시 콘솔에 출력
+    await sleep(0.5);
+    retries++;
     console.log(error);
+    console.log(`Error fetching data, retrying (${retries}/${maxRetries})...`);
+    if (retries === 3) {
+      alert("서버가 불안정합니다. 잠시 후 다시 시도해주세요!");
+    }
   }
+}
 }
 
 document

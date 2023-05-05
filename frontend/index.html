@@ -47,36 +47,36 @@
         <span class="warning">올바르지 않은 생년월일입니다.</span>
       </div>
       <div>
-      <label for="date">태어난 시간 : </label>
-      <select id="hour" name="hours">
-        <option value="">모름</option>
-        <option value="00">00</option>
-        <option value="01">01</option>
-        <option value="02">02</option>
-        <option value="03">03</option>
-        <option value="04">04</option>
-        <option value="05">05</option>
-        <option value="06">06</option>
-        <option value="07">07</option>
-        <option value="08">08</option>
-        <option value="09">09</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-      </select>
-    </div>
-      <button onclick="start()">운세 보기</button>
+        <label for="date">태어난 시간 : </label>
+        <select id="hour" name="hours">
+          <option value="">모름</option>
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+        </select>
+      </div>
+      <button class="startBnt" onclick="start()">운세 보기</button>
     </div>
 
     <div class="chat-container" style="display: none">
@@ -85,14 +85,14 @@
       </div>
       <div class="chat-box">
         <div class="assistant-message">
-          <p>
+          <!-- <p>
             안녕하세요. 운세 보는 깜냥이입니다. 당신의 운세를 점쳐드릴게요.
             무엇을 알고 싶으세요?
-          </p>
+          </p> -->
         </div>
       </div>
       <div class="chat-input">
-        <input type="text" placeholder="메시지를 입력하세요" />
+        <input id="chat-input" type="text" placeholder="메시지를 입력하세요" />
         <button id="btn">
           <i class="fa-regular fa-paper-plane"></i>
         </button>
@@ -102,6 +102,7 @@
         </div>
       </div>
     </div>
+    <div class="kakao_ad">
 
     <ins
       class="kakao_ad_area"
@@ -110,6 +111,7 @@
       data-ad-width="320"
       data-ad-height="50"
     ></ins>
+    </div>
     <script
       type="text/javascript"
       src="//t1.daumcdn.net/kas/static/ba.min.js"
