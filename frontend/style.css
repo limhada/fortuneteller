@@ -120,6 +120,7 @@ body {
 .assistant-message p {
   max-width: 80%;
   padding: 10px 15px;
+  margin-left: -5%;
   background-color: #c5e5ff;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -247,7 +248,6 @@ body {
     }
   }
 }
-
 
 /* 가운데 정렬 정리해놓기!!  */
 #chat-loader {
