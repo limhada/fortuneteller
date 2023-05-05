@@ -115,7 +115,7 @@ function sleep(sec) {
 }
 
 let first = 0;
-// "운세에 대해 더 궁금한 것이 있으면 질문해 주시고 우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♥";
+
 // 챗봇에게 운세를 요청하는 함수
 async function getFortune() {
   const maxRetries = 3;
@@ -152,19 +152,11 @@ async function getFortune() {
 
       if (first === 0) {
         const p = document.createElement("p"); // 새로운 p 엘리먼트 생성
-        p.innerText = "운세에 대해 더 궁금한 것이 있으면 질문해 주세요!";
+        p.innerText =
+          "우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♥ 그리고 운세에 대해 더 궁금한 것이 있으면 질문해 주세요! ";
         p.classList.add("answer");
-
-        const a = document.createElement("a");
-        a.href = "https://toss.me/limhada";
-        a.innerHTML =
-          "해당 글씨나 우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♥";
-        a.classList.add("answer");
-
         chatBox.appendChild(p);
-        chatBox.appendChild(a);
         chatBox.scrollTop = chatBox.scrollHeight; // 채팅 박스를 스크롤하여 최신 메시지가 보이도록 함
-
         first++;
       }
 
