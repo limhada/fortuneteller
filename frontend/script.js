@@ -29,6 +29,18 @@ function zoomOut() {
   document.querySelector(".startBnt").blur();
 }
 
+
+// 복채주는 페이지로 이동하는
+// function redirectToAbc() {
+  const elements = document.querySelectorAll('.gift');
+  elements.forEach(element => {
+    element.addEventListener('click', () => {
+      window.location.href = 'https://toss.me/limhada';
+    });
+  });
+// }
+
+
 function start() {
   const date = document.getElementById("date1").value;
   const hour = document.querySelector("#hour").value;
