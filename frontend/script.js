@@ -18,11 +18,6 @@ let userMessages = []; // 사용자 메시지를 누적 저장할 배열
 let assistantMessages = []; // 챗봇 메시지를 누적 저장할 배열
 let myDateTime = "";
 
-function loading() {
-  document.getElementById("loader").style.display = "block";
-  document.getElementById("btn").style.display = "none";
-}
-
 function start() {
   const date = document.getElementById("date").value;
   const hour = document.querySelector("#hour").value;
@@ -64,7 +59,18 @@ function sendMessage() {
     addMessage(message, true); // 사용자의 메시지로 간주하여 채팅 박스에 추가
     getFortune(message); // 입력된 메시지를 이용해 챗봇으로부터 운세를 받아옴
     inputBox.value = ""; // 입력 상자를 초기화
+
+    loading();
+  } else {
+    // 입력된 메세지가 없으면
+    alert("메시지를 입력해 주세요.");
+    return;
   }
+}
+
+function loading() {
+  document.getElementById("loader").style.display = "block";
+  document.getElementById("btn").style.display = "none";
 }
 
 // 챗봇에게 운세를 요청하는 함수
