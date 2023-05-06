@@ -116,7 +116,8 @@ body {
   margin-left: 5%;
 }
 
-.assistant-message div {
+/* 초기 시작 멘트 */
+.assistant-message p {
   max-width: 80%;
   padding: 10px 15px;
   margin-left: -5%;
