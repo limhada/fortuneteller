@@ -19,10 +19,6 @@ let userMessages = []; // 사용자 메시지를 누적 저장할 배열
 let assistantMessages = []; // 챗봇 메시지를 누적 저장할 배열
 let myDateTime = "";
 
-
-
-
-
 // 아이폰13에서 화면이 줌 된 상태로 운세 보기 버튼 클릭 시 결과 화면이 확대되어 사용자의 안좋은 경험을 유발하기 때문에 운세 보기 버튼 클릭 시 화면이 기본 스케일로 축소된 상태로 결과가 나옴
 function zoomOut() {
   var viewport = document.querySelector("meta[name=viewport]");
@@ -160,7 +156,7 @@ async function getFortune() {
         const p = document.createElement("p"); // 새로운 p 엘리먼트 생성
         p.innerText =
           "우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♥ 그리고 운세에 대해 더 궁금한 것이 있으면 질문해 주세요! ";
-        p.classList.add("answer gift-b gift");
+        p.classList.add("answer", "gift-b", "gift");
         chatBox.appendChild(p);
         chatBox.scrollTop = chatBox.scrollHeight; // 채팅 박스를 스크롤하여 최신 메시지가 보이도록 함
         first++;
