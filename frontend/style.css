@@ -45,13 +45,6 @@ body {
   /* margin-right: 20px; */
   border-radius: 50%;
 }
-.gift {
-  /* color: #fddf01; */
-  /* color: #ffd700; */
-  color: #fde533;
-
-  
-}
 
 .gift-b {
   color: #4763ff;
@@ -60,7 +53,7 @@ body {
 .gift-t {
   text-align: right;
   padding-right: 5%;
-
+  color: #fde533;
   @media screen and (min-width: 500px) {
     padding-right: 3%;
   }
@@ -123,7 +116,7 @@ body {
   margin-left: 5%;
 }
 
-.assistant-message p {
+.assistant-message div {
   max-width: 80%;
   padding: 10px 15px;
   margin-left: -5%;
