@@ -276,4 +276,11 @@ body {
   align-items: center;
 
   color: #b774c3;
+  /* color: white; */
+  /* background-color: #b774c3; */
+  /* border-radius: 20px; */
+
+  /* @media screen and (min-width: 500px) {
+    top: 30%;
+  } */
 }
