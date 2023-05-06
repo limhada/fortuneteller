@@ -156,7 +156,7 @@ async function getFortune() {
         const d = document.createElement("div");
         d.classList.add("gift", "answer", "gift-b");
         d.innerText =
-        "우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♥ 그리고 운세에 대해 더 궁금한 것이 있으면 질문해 주세요! ";
+          "우측 상단의 아이콘을 클릭해서 깜냥이에게 츄르를 후원해 주세요♥ 그리고 운세에 대해 더 궁금한 것이 있으면 질문해 주세요! ";
         // const p = document.createElement("p"); // 새로운 p 엘리먼트 생성
         // p.classList.add("answer", "gift-b");
         // d.appendChild(p)
