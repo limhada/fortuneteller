@@ -50,9 +50,15 @@ body {
   /* color: #ffd700; */
   color: #fde533;
 
-  text-align: right;
+  
 }
+
+.gift-b {
+  color: #4763ff;
+}
+
 .gift-t {
+  text-align: right;
   padding-right: 5%;
 
   @media screen and (min-width: 500px) {
