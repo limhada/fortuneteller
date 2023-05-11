@@ -243,5 +243,5 @@ function isAndroid() {
 if (!isAndroid()) {
   // 안드로이드 디바이스인 경우에 대한 동작을 여기에 작성합니다.
   var element = document.getElementById("chat-loader-content");
-  element.style.borderWidth = "0.3rem";
+  element.style.borderWidth = "0.45rem";
 }
