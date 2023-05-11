@@ -233,13 +233,15 @@ const checkValidDate = (value) => {
 };
 
 // ios인지 확인
-function isIOS() {
-  var userAgent = window.navigator.userAgent;
-  return /iPhone|iPad|iPod/.test(userAgent);
+function isAndroid() {
+  return (
+    window.navigator.userAgent.match(/Android/i) &&
+    window.navigator.userAgent.match(/Mobile/i)
+  );
 }
 
-if (!isIOS()) {
+if (isAndroid()) {
   // 안드로이드 디바이스인 경우에 대한 동작을 여기에 작성합니다.
   var element = document.getElementById("chat-loader-content");
-  element.style.borderWidth = "1rem";
+  element.style.borderWidth = "0.5rem";
 }
