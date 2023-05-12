@@ -4,7 +4,11 @@
 
 인공지능 AI인 ChatGPT를 기반으로 구현하여 깜냥이에게 사람과의 대화처럼 운세를 질문하고 상담할 수 있습니다.
 
-
+<br>
+운세 보는 깜냥이 - QR코드
+<br><br>
+<img src="https://github.com/limhada/fortuneteller/assets/107875213/2f1265d9-64dd-44a7-967e-0fe271b99c56" width="150px" height="150px">
+<br><br>
 <img src="https://user-images.githubusercontent.com/107875213/236671922-462edb89-0d8d-40fc-9b3e-32e9354a5f97.png" width="400px" height="500px">
 <img src="https://user-images.githubusercontent.com/107875213/236671925-b38f6516-f0c4-4379-ae43-297bf0f99876.png" width="400px" height="500px">
 
