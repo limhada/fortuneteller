@@ -123,7 +123,7 @@ async function getFortune() {
   while (retries < maxRetries) {
     try {
       const response = await fetch(
-        "https://foomyfmjoozfx4lmfuyfkefd740abaql.lambda-url.ap-northeast-2.on.aws/fortuneTell",
+        "https://4yfvgpyyx7.execute-api.ap-northeast-2.amazonaws.com/prod/fortuneTell",
         {
           // 운세를 요청할 서버 URL
           method: "POST", // POST 방식으로 요청
