@@ -4,6 +4,8 @@
 
 인공지능 AI인 ChatGPT를 기반으로 구현하여 깜냥이에게 사람과의 대화처럼 운세를 질문하고 상담할 수 있습니다.
 
+Deployment URL : https://portfolio-limhada.vercel.app
+<br>
 <br>
 운세 보는 깜냥이 - QR코드
 <br><br>
