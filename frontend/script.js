@@ -34,7 +34,9 @@ function zoomOut() {
 const elements = document.querySelectorAll(".gift");
 elements.forEach((element) => {
   element.addEventListener("click", () => {
-    window.location.href = "https://toss.me/limhada";
+    // 토스 아이디 송금 기능 없어짐으로 비활성화 함
+    // window.location.href = "https://toss.me/limhada";
+    alert('마음만 받겠습니다. 행복한 오늘을 보내세요!');
   });
 });
 
@@ -155,13 +157,14 @@ async function getFortune() {
       addMessage(data.assistant); // 챗봇이 응답한 운세를 채팅 박스에 추가
 
       if (first === 0) {
-        const d = document.createElement("div");
-        d.classList.add("gift", "answer", "gift-b");
+        const d = document.createElement('div');
+        d.classList.add('gift', 'answer', 'gift-b');
         d.innerText =
-          "해당 글씨 또는 우측 상단의 아이콘을 클릭해서 깜냥이에게 복채를 후원해 주세요♥ 그리고 운세에 대해 더 궁금한 것이 있으면 질문해 주세요! ";
-        d.addEventListener("click", () => {
-          window.location.href = "https://toss.me/limhada";
-        });
+          '운세는 정확한 정보가 아니며 참고만 하시기 바랍니다. 그리고 운세에 대해 더 궁금한 것이 있으면 질문해 주세요! ';
+        // 토스 아이디로 송금 기능 사라짐으로 코드 수정함.
+        // d.addEventListener('click', () => {
+        //   window.location.href = 'https://toss.me/limhada';
+        // });
         chatBox.appendChild(d);
         chatBox.scrollTop = chatBox.scrollHeight; // 채팅 박스를 스크롤하여 최신 메시지가 보이도록 함
         first++;
